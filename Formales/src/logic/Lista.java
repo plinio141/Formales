@@ -8,12 +8,13 @@ public class Lista {
 	ArrayList<Nodo> nodos;
 	public  Lista() {
 		nodos=new ArrayList<Nodo>();
+		ultimos=new ArrayList<Nodo>();
 	}
 	public void agregarRelacion(Nodo n1, Nodo n2, char l){
 		n1.addRelacion(n2,l);
 	}
-	public void addNodo(String s){
-		nodos.add(new Nodo(s));
+	public void addNodo(Nodo s){
+		nodos.add(s);
 	}
 	public void inicial(Nodo n){
 		inicial=n;
@@ -34,5 +35,18 @@ public class Lista {
 			}
 		}
 		return false;
+	}
+	public Nodo getNodo(String g){
+		for (int i = 0; i < nodos.size(); i++) {
+			if(nodos.get(i).nombre.equals(g)){
+				return nodos.get(i);
+			}
+		}
+		return null;
+	}
+	public void matrix(){
+		for (int i = 0; i < nodos.size(); i++) {
+			nodos.get(i).mostrarRelaciones();
+		}
 	}
 }

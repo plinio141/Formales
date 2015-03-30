@@ -7,4 +7,5 @@ public class Relacion {
 		nodo=n;
 		l=s;
 	}
+	
 }
