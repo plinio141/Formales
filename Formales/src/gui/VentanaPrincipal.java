@@ -1,5 +1,9 @@
 package gui;
 
+import java.awt.Event;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFileChooser;
@@ -9,8 +13,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-public class VentanaPrincipal extends JFrame implements {
+/**
+ * Esta clase es la ventana principal donde contiene todo acerca del automata
+ * @author Tatiz
+ *
+ */
+public class VentanaPrincipal extends JFrame implements ActionListener,   KeyListener {
 	/* 
 	 * barra de menú
 	 */
@@ -59,7 +67,13 @@ public class VentanaPrincipal extends JFrame implements {
 	 * permite ver el lenguaje del automata
 	 */
 	private JMenuItem lenguaje;
+	/*
+	 * item cerrar
+	 */
 	private JMenuItem exit;
+	/*
+	 * ingresar la cadena para realizar la prueba
+	 */
 	private JMenuItem ingresarCadena;
 	
 	/*
@@ -87,7 +101,13 @@ public class VentanaPrincipal extends JFrame implements {
 		
 		
 		this.open = new JMenuItem("Abrir");
+		this.open.addActionListener(this);
+		this.open.setActionCommand("ABRIR");
+		
 		this.save = new JMenuItem("Guardar");
+		this.save.addActionListener(this);
+		this.save.setActionCommand("GUARDAR");
+		
 		this.exit = new JMenuItem("Exit");
 		
 		this.matriz = new JMenuItem("Matriz de transición");
@@ -117,6 +137,9 @@ public class VentanaPrincipal extends JFrame implements {
 		
 		ejecutar.add(ingresarCadena);
 		}
+	/*
+	 * método para guardar el automata con extension tdp
+	 */
 	public void guardar(){
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("TDP", "tdp");
@@ -129,6 +152,9 @@ public class VentanaPrincipal extends JFrame implements {
 		}
 		
 	}
+	/*
+	 * método para abrir un automata
+	 */
 	public String abrir(){
 		JFileChooser chooser = new JFileChooser();
 		chooser.getSelectedFile();
@@ -147,6 +173,37 @@ public class VentanaPrincipal extends JFrame implements {
 			}
 		}
 		return "";
+	}
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		if(arg0.getActionCommand().equalsIgnoreCase("ABRIR")){
+			try{
+				String path = abrir();
+			}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
+		if(arg0.getActionCommand().equalsIgnoreCase("GUARDAR")){
+			guardar();
+			
+		}
+		
 	}
 
 }
