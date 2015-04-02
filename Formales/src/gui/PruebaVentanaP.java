@@ -1,8 +1,10 @@
 package gui;
 
+import javax.swing.JFrame;
+
 public class PruebaVentanaP {
-public PruebaVentanaP() {
-	// TODO Auto-generated constructor stub
-	
-}
+	public static void main(String[] args) {
+		VentanaPrincipal vp = new VentanaPrincipal();
+		vp.setVisible(true);
+	}
 }
