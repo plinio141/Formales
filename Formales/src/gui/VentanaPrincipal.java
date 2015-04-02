@@ -1,11 +1,16 @@
 package gui;
 
+import java.awt.event.KeyListener;
+
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class VentanaPrincipal extends JFrame{
+public class VentanaPrincipal extends JFrame implements {
 	/* 
 	 * barra de menú
 	 */
@@ -111,11 +116,37 @@ public class VentanaPrincipal extends JFrame{
 		automata.add(matriz);
 		
 		ejecutar.add(ingresarCadena);
-		
-		
-		
+		}
+	public void guardar(){
+		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("TDP", "tdp");
+		chooser.setFileSelectionMode(chooser.DIRECTORIES_ONLY);
+		int returnVal = chooser.showSaveDialog(getParent());
+
+		if(returnVal == JFileChooser.APPROVE_OPTION ) {
+			String path =chooser.getSelectedFile().getPath();
+			automtata___.saveFile(path);
+		}
 		
 	}
-	
+	public String abrir(){
+		JFileChooser chooser = new JFileChooser();
+		chooser.getSelectedFile();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("TDP", "tdp");
+		chooser.setFileFilter(filter);
+		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		int returnVal = chooser.showOpenDialog(getParent());
+
+		if(returnVal == JFileChooser.APPROVE_OPTION ) {
+			try{
+				String path =chooser.getSelectedFile().getPath();
+				automata----.loadFile(path);
+				return path;
+			}catch(Exception e){
+				JOptionPane.showMessageDialog(null, "El archivo no cumple con el formato o hay ficheros que no existen", "ERROR", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		return "";
+	}
 
 }
